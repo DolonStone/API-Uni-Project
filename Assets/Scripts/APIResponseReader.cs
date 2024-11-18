@@ -5,20 +5,32 @@ using TMPro;
 
 public class APIResponseReader : MonoBehaviour
 {
-
-    public TextMeshProUGUI responseText;
+    [SerializeField] private GameObject plantNameResponsePrefab;
+    [SerializeField] private TMP_InputField inputText;
+    [SerializeField] private GameObject scrollBarContent;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-        (PerenualResponse plantresponse,string output) = APIHelper.GetPlant("cucumber");
-        //responseText.text = plantresponse.data[0,0];
-        output.Replace("[", "");
-        output.Replace("]", "");
-        print(output);
-        Debug.Log(plantresponse.data[0,0]);
+        inputText = gameObject.GetComponentInChildren<TMP_InputField>();
+        scrollBarContent = GameObject.Find("Content");
 
     }
+    public void SearchAPI()
+    {
+        
+        PerenualResponse plantresponse = APIHelper.GetPlant(inputText.text);
 
+        for(int i = 0; i < plantresponse.data.Length; i++)
+        {
+            
+            GameObject prefab = Instantiate(plantNameResponsePrefab);
+            prefab.transform.parent = scrollBarContent.transform;
+            //prefab.transform.position = scrollBarContent.transform.position;
+            prefab.transform.localPosition = new Vector3(310,-30,0);
+            prefab.transform.localPosition += (new Vector3(0, -50, 0)) * i;
+            prefab.GetComponentInChildren<TextMeshProUGUI>().text = plantresponse.data[i].common_name;
 
+            
+        }
+    }
 }

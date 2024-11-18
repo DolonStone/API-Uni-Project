@@ -2,7 +2,7 @@
 [System.Serializable]
 public class PerenualResponse
 {
-    public string[,] data;
+    public DataPerenualResponse[] data;
     public string to;
     public string per_page;
     public string current_page;
