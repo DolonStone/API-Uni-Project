@@ -24,11 +24,12 @@ public class APIResponseReader : MonoBehaviour
         {
             
             GameObject prefab = Instantiate(plantNameResponsePrefab);
-            prefab.transform.parent = scrollBarContent.transform;
+            prefab.transform.SetParent(scrollBarContent.transform);
             //prefab.transform.position = scrollBarContent.transform.position;
-            prefab.transform.localPosition = new Vector3(310,-30,0);
+            prefab.transform.localPosition = new Vector3(255.46f, -26.8f, 0f);
             prefab.transform.localPosition += (new Vector3(0, -50, 0)) * i;
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text = plantresponse.data[i].common_name;
+            prefab.GetComponentInChildren<PlantData>().data = plantresponse.data[i];
+            
 
             
         }
