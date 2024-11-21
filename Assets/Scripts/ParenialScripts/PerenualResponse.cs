@@ -7,7 +7,7 @@ public class PerenualResponse
     public string per_page;
     public string current_page;
     public string from;
-    public string last_page;
+    public int last_page;
     public string total;
 
 
