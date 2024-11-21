@@ -1,11 +1,23 @@
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
 using System.Collections;
+using System.Net.Http;
 
 public class APIConnector : MonoBehaviour
 {
-    private string apiURL = "http://ip-api.com/json/?fields=status,lon,lat,query"; // Replace with your API URL
+    //private string apiURL = "http://ip-api.com/json/?fields=status,city,query"; // Replace with your API URL
 
+    static void Main(string[] args)
+    {
+        using(var client = new HttpClient())
+        {
+            var endpoint = new Uri("http://ip-api.com/json/?fields=status,city,query");
+            var result = client.GetAsync(endpoint).Result;
+            var json = result.Content.ReadAsStringAsync().Result;
+
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,30 +25,5 @@ public class APIConnector : MonoBehaviour
         //StartCoroutine(GetDataFromAPI());
     }
 
-    // Coroutine to make the GET request
-    IEnumerator GetDataFromAPI()
-    {
-        // Send the GET request to the API
-        using (UnityWebRequest request = UnityWebRequest.Get(apiURL))
-        {
-            // Wait for the request to complete
-            yield return request.SendWebRequest();
-
-            // Check for errors
-            if (request.isNetworkError || request.isHttpError)
-            {
-                Debug.LogError("Error: " + request.error);
-            }
-            else
-            {
-                // Parse the response
-                string response = request.downloadHandler.text;
-                Debug.Log("Response from API: " + response);
-
-                // You can further process the response, e.g., parsing JSON:
-                //YourJsonData myData = JsonUtility.FromJson<YourJsonData>(response);
-            }
-        }
-    }
 }
-// testing if i can edit from laptop
+// gonna try and usee website https://youtu.be/Yi-O-HBGPeU?si=U_OJbBivDJw3DsV3 to help
