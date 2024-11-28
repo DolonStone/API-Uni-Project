@@ -53,6 +53,7 @@ public static class APIHelper
             ipapijson ipresponse = JsonUtility.FromJson<ipapijson>(json);
             Debug.Log(ipresponse.status);
             Debug.Log(ipresponse.city);
+            return ipresponse.city;
         }
     }
     public static weatherapijson GetWeather(string location)
