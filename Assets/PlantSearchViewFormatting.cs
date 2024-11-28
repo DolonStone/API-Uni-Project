@@ -48,6 +48,10 @@ public class PlantSearchViewFormatting : MonoBehaviour
         for (int i = 0; i < data.other_name.Length; i++)
         {
             outPut += data.other_name[i];
+            if (i > 3)
+            {
+                break;
+            }
         }
         
         
