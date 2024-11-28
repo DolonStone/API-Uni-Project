@@ -17,7 +17,11 @@ public class APIResponseReader : MonoBehaviour
     }
     public void SearchAPI()
     {
-        
+        foreach (Transform child in scrollBarContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        inputText.text = "";
         PerenualResponse plantresponse = APIHelper.GetPlant(inputText.text);
 
         for(int i = 0; i < plantresponse.data.Length; i++)
