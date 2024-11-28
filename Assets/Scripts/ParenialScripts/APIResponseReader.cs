@@ -21,7 +21,7 @@ public class APIResponseReader : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        inputText.text = "";
+        
         PerenualResponse plantresponse = APIHelper.GetPlant(inputText.text);
 
         for(int i = 0; i < plantresponse.data.Length; i++)
@@ -37,5 +37,6 @@ public class APIResponseReader : MonoBehaviour
 
             
         }
+        inputText.text = "";
     }
 }
