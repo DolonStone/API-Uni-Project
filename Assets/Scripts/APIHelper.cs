@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 
 public static class APIHelper
@@ -33,6 +34,15 @@ public static class APIHelper
         firstResponse.data = allDataResponses.SelectMany(array => array).ToArray();
 
         return firstResponse; //returns the responce
+
+    }
+
+    public static string GetLocation()
+    {
+
+    }
+    public static weatherapijson GetWeather(string location)
+    {
 
     }
 }
