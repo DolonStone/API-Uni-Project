@@ -14,12 +14,11 @@ public class getipapijson : MonoBehaviour
         {
             var endpoint = new Uri("http://ip-api.com/json/?fields=status,city"); // set the api to a variable
             var result = client.GetAsync(endpoint).Result; // get the result from the api
-            string json = result.Content.ReadAsStringAsync().Result; // read the json file result and store it as a variable
-            
-            //Debug.Log(json); // print the json variable
-            //ipapijson ipresponse = JsonUtility.FromJson<ipapijson>(json);
-            //Debug.Log(ipresponse.status);
-            //Debug.Log(ipresponse.city);
+            string json = result.Content.ReadAsStringAsync().Result;// read the json file result and store it as a variable
+            Debug.Log(json); // print the json variable
+            ipapijson ipresponse = JsonUtility.FromJson<ipapijson>(json);
+            Debug.Log(ipresponse.status);
+            Debug.Log(ipresponse.city);
         }
     }
 
