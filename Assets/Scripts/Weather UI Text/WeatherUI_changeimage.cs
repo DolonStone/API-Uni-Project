@@ -6,34 +6,35 @@ using UnityEngine.UI;
 public class WeatherUI_changeimage : MonoBehaviour
 {
     public Image weatherimage;
-    public Sprite newSprite;
+    private string weathertype = APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon;
+
     // Start is called before the first frame update
     void Start()
     {
-        weatherimage.sprite = newSprite;
-        //6schangeimage(APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon);
+        //weatherimage.sprite = newSprite;
+        UpdateImage(weathertype); // calls the update image function taking the weather type from
+        //Debug.Log(weathertype);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateImage(string current_W)
     {
-        
-    }
+        Debug.Log(current_W + " image");
+        //Sprite newSprite = Resources.Load<Sprite>("Assets / Images / " + current_W + "sprite.png");
+        Sprite newSprite = Resources.Load<Sprite>(current_W + "sprite.png");
+        //Sprite unknownsprite = Resources.Load<Sprite>("Assets / Images / unknownsprite.png");
+        Sprite unknownsprite = Resources.Load<Sprite>("unknownsprite.png");
+        Debug.Log("Assets / Images / " + current_W + "sprite.png");
 
-    void LoadImageFromResources()
-    {
-        // Load a sprite from Resources/Images
-        Sprite spriteFromResources = Resources.Load<Sprite>("Images/rainsprite");
-        if (spriteFromResources != null)
+        if (newSprite != null)
         {
-            weatherimage.sprite = spriteFromResources;
+            weatherimage.sprite = newSprite;
+            Debug.Log("1");
         }
-    }
 
-    public void changeimage(string current_W)
-    {
-        if (current_W == "rain")
+        else
         {
+            weatherimage.sprite = unknownsprite;
+            Debug.Log("0");
         }
     }
 }
