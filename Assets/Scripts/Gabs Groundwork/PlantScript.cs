@@ -18,6 +18,7 @@ public class PlantScript : MonoBehaviour
     private SunlightNeed SunlightNeed;
     private string Cycle;
     private float GrowthRate;
+    private DataPerenualResponse plantData;
 
     private float timer = 0.0f;
 
@@ -27,8 +28,8 @@ public class PlantScript : MonoBehaviour
         GrowthRate = 2f;
         currentState = seedState;
         currentState.EnterState(this);
-        WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), "FREQUENT", ignoreCase: true);
-        SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), "PART_SUN", ignoreCase: true);
+        //WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), "FREQUENT", ignoreCase: true);
+        //SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), "PART_SUN", ignoreCase: true);
         WateredPercentage = 50;
 
     }
@@ -73,6 +74,15 @@ public class PlantScript : MonoBehaviour
 
     public float GetWateredPercentage() { return WateredPercentage; }
     public float GetSunlightNeed() { return (int)SunlightNeed; }
+
+    public void ParseParenialResponse(DataPerenualResponse data)
+    {
+        plantData = data;
+        PlantName = data.common_name;
+        Cycle = data.cycle;
+        WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), data.watering, ignoreCase: true);
+        SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), String.Join("_", data.sunlight[0].Split(default(string[]), StringSplitOptions.RemoveEmptyEntries)), ignoreCase: true);
+    }
 }
 
 public enum WaterNeed

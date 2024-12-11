@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 2357455620993518920}
   - component: {fileID: 8200516602015320231}
   - component: {fileID: 2390750152677186166}
+  - component: {fileID: 1806124490233143614}
   m_Layer: 5
   m_Name: SeedSlot
   m_TagString: Untagged
@@ -203,3 +204,16 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1806124490233143614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4685403316085129556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d82189b407ef07469fdf0d5c038d5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planter: 0
