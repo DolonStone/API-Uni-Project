@@ -17,7 +17,7 @@ public static class APIHelper
     
     public static PerenualResponse GetPlant(string plantName)
     {
-        HttpWebRequest firstrequest = (HttpWebRequest)WebRequest.Create("https://perenual.com/api/species-list?key=sk-M3JX6734996178fc17621&q=" + plantName); //sends request to the link
+        HttpWebRequest firstrequest = (HttpWebRequest)WebRequest.Create("https://perenual.com/api/species-list?key=sk-W4L7675a0c2c2e6d47971&q=" + plantName); //sends request to the link
         HttpWebResponse firstresponse = (HttpWebResponse)firstrequest.GetResponse(); //gets the response from the request
         StreamReader firstreader = new StreamReader(firstresponse.GetResponseStream()); //puts the responce in a reader
         string firstjson = firstreader.ReadToEnd(); //reads the response into a string
@@ -28,7 +28,7 @@ public static class APIHelper
         allDataResponses.Add(firstResponse.data);
         for (int i = 1; i < firstResponse.last_page;i++)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://perenual.com/api/species-list?key=sk-M3JX6734996178fc17621&q=" + plantName+"&page="+i); //sends request to the link
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://perenual.com/api/species-list?key=sk-W4L7675a0c2c2e6d47971&q=" + plantName+"&page="+i); //sends request to the link
             HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //gets the response from the request
             StreamReader reader = new StreamReader(response.GetResponseStream()); //puts the responce in a reader
             string json = reader.ReadToEnd(); //reads the response into a string
