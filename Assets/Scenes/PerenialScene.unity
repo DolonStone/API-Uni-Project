@@ -562,7 +562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weatherimage: {fileID: 389130350}
-  newSprite: {fileID: 21300000, guid: 194d2d2d6a25a414281522015002021c, type: 3}
 --- !u!1 &430328295
 GameObject:
   m_ObjectHideFlags: 0

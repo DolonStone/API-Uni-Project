@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WeatherIcons
+  m_EditorClassIdentifier: 
+  m_GroupName: WeatherIcons
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 069dee2c9bfb3c14bafb230060224890
+  m_SerializeEntries:
+  - m_GUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_Address: Assets/Images/WeatherIcons.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3f57b66a690a7bd4c9bd6ac7b3c4c5d6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 16d7fb085d981014296bbc46dfa6ac8e, type: 2}
+    - {fileID: 11400000, guid: e134752c80fa19448b075e08d134e860, type: 2}
