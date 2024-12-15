@@ -8,6 +8,7 @@ public class test123 : MonoBehaviour
     void Start()
     {
         print(APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon);
+        print(APIHelper.GetLocation());
     }
 
 

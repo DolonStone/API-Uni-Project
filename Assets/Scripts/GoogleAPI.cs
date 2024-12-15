@@ -19,13 +19,12 @@ using System.Net.Http;
 
 public class GoogleAPI : MonoBehaviour
 {
-    public static string apiKey = "AIzaSyDR1b5h2h3UW0TTiMI3zzbGw_R4OHbHHqE";
-    public static string searchEngineId = "b13db8adca5f34f05";
-    public static string query = "bellis perennis";
-    public static int numResults = 1;
+    private static string apiKey = "AIzaSyDR1b5h2h3UW0TTiMI3zzbGw_R4OHbHHqE";
+    private static string searchEngineId = "b13db8adca5f34f05";
+    private static int numResults = 1;
     private bool isProcessing;
     private string URL; 
-    public string Root;
+    private string Root;
     byte[] imageBytes;
 
 
@@ -41,35 +40,37 @@ public class GoogleAPI : MonoBehaviour
     {
         if (!isProcessing && Input.GetKeyDown(KeyCode.Space))
         {
-            PerformCustomSearch();
+            PerformCustomSearch("bellis perennis"); //Passed through the Query ->
+                                                    //thought we could just call this method when needed?
         }
         if (imageBytes != null && isProcessing)
         {
-            UpdateSprite(imageBytes);
+            //Update Sprite MUST be called in the main thread (Unity gets funny if you try and change sprite within async)
+            UpdateSprite(imageBytes); 
         }
 
 
     }
 
-    async Task PerformCustomSearch()
+    public async Task PerformCustomSearch(string query)
     {
         Debug.Log("Hello!");
         isProcessing = true;
         try
         {
-            // Initialize the Custom Search Service
+            // Initialize Custom Search
             var customSearchService = new CustomSearchAPIService(new BaseClientService.Initializer
             {
                 ApiKey = apiKey,
                 ApplicationName = "CropSim"
             });
 
-
+            //Creates the query (we can alter the specifics - pretty sure we can filter for image formats) 
             var listRequest = customSearchService.Cse.List();
             listRequest.Q = query;
             listRequest.Cx = searchEngineId;
             listRequest.SearchType = CseResource.ListRequest.SearchTypeEnum.Image;
-            listRequest.Num = 1;
+            listRequest.Num = numResults;
 
             Search searchResponse = await listRequest.ExecuteAsync().ConfigureAwait(false);
             Debug.Log("Hello");
@@ -78,11 +79,9 @@ public class GoogleAPI : MonoBehaviour
             {
                 foreach (var item in searchResponse.Items)
                 {
-                    Debug.Log($"Title: {item.Title}");
-                    Debug.Log($"Link: {item.Link}");
+
                     URL = item.Link;
                     await SaveImage(URL);
-                    Debug.Log("greetings");
                 }
 
             }
@@ -99,7 +98,8 @@ public class GoogleAPI : MonoBehaviour
 
     public async Task SaveImage(string imageUrl)
     {
-
+        //Getting the image from the link and downloading it -> not sure if this is actually memory efficient -
+        //will compare it to Beth's image code and see if I can improve it :))
         using (HttpClient imageClient = new HttpClient())
         {
             string filePath = Path.Combine(Root, "savedTexture.png"); 
@@ -118,6 +118,8 @@ public class GoogleAPI : MonoBehaviour
 
     private void UpdateSprite(byte[] imageBytes)
     {
+        //Does what it says on the tin :)
+        //This should probably be in the plant prefab but need to check with group :))
         Texture2D plantTex = new Texture2D(2, 2);
         plantTex.LoadImage(imageBytes);
 

@@ -7,15 +7,20 @@ public class PlantSearchViewFormatting : MonoBehaviour
 {
     private PlantData plantData;
     [SerializeField] private TextMeshProUGUI dataField;
+    [SerializeField] private PlantScript plant;
     void Start()
     {
         plantData = gameObject.GetComponent<PlantData>();
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = plantData.data.common_name;
         dataField.text += FormatDataToText(plantData.data);
+
+        //plant = gameObject.GetComponentInChildren<PlantScript>();
+        
     }
 
     public void ShowData()
     {
+        GiveDataToPlant(plantData.data, plant);
         GameObject responseDataObject = dataField.gameObject.transform.parent.gameObject;
         if (responseDataObject.activeSelf)
         {
@@ -39,10 +44,6 @@ public class PlantSearchViewFormatting : MonoBehaviour
         {
             outPut += data.scientific_name[i];
         }
-        
-
-
-
         outPut += "\n";
 
         for (int i = 0; i < data.other_name.Length; i++)
@@ -53,9 +54,6 @@ public class PlantSearchViewFormatting : MonoBehaviour
                 break;
             }
         }
-        
-        
-
         outPut += "\n";
         outPut += data.cycle + "\n";
         outPut += data.watering + "\n";
@@ -68,5 +66,9 @@ public class PlantSearchViewFormatting : MonoBehaviour
 
         return outPut;
     }
+    public void GiveDataToPlant(DataPerenualResponse data, PlantScript plant)
+    {
 
+        plant.ParseParenialResponse(data);
+    }
 }
