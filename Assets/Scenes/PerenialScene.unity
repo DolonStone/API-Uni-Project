@@ -561,13 +561,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64be8bd39ae7a84ab5d9a37aca2d276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeatherIcons:
-    m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+  Image: {fileID: 389130350}
+  weatherImages:
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: clear-day
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: clear-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: cloudy
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: fog
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: hail
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
     m_SubObjectName: null
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_EditorAssetChanged: 1
-  weatherimage: {fileID: 389130350}
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: partly-cloudy-day
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: partly-cloudy-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: rain
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: showers-day
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: showers-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: snow
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: snow-day
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: snow-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: snow-showers
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: snow-showers-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: thunder
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: thunder-rain
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: thunder-showers-day
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: thunder-showers-night
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: wind
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
 --- !u!1 &430328295
 GameObject:
   m_ObjectHideFlags: 0
