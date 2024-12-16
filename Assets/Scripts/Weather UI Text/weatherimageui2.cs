@@ -67,7 +67,7 @@ public class WeatherImageUI2 : MonoBehaviour
         }
 
         Debug.LogWarning("Weather type not found, defaulting to index 0");
-        arrayindex = 0; // Default to clear-day if not found
+        arrayindex = 5; // Default to clear-day if not found
     }
 }
 
