@@ -558,9 +558,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 389130348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba1e68cb3d9af7344a8c7eb58309a777, type: 3}
+  m_Script: {fileID: 11500000, guid: a64be8bd39ae7a84ab5d9a37aca2d276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeatherIcons:
+    m_AssetGUID: c71a4fe023da9c74ab2cb9df820c0a3b
+    m_SubObjectName: null
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
   weatherimage: {fileID: 389130350}
 --- !u!1 &430328295
 GameObject:
