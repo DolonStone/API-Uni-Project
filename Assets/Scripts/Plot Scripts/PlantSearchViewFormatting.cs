@@ -8,14 +8,16 @@ public class PlantSearchViewFormatting : MonoBehaviour
     private PlantData plantData;
     [SerializeField] private TextMeshProUGUI dataField;
     [SerializeField] private PlantScript plant;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     void Start()
     {
         plantData = gameObject.GetComponent<PlantData>();
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = plantData.data.common_name;
         dataField.text += FormatDataToText(plantData.data);
-
+        spriteRenderer.sprite = APIHelper.GetImage(plantData.data.scientific_name.ToString());
         //plant = gameObject.GetComponentInChildren<PlantScript>();
-        
+
+
     }
 
     public void ShowData()

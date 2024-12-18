@@ -33,9 +33,9 @@ public class APIResponseReader : MonoBehaviour
             prefab.transform.localPosition = new Vector3(255.46f, -26.8f, 0f);
             prefab.transform.localPosition += (new Vector3(0, -50, 0)) * i;
             prefab.GetComponentInChildren<PlantData>().data = plantresponse.data[i];
-            
 
-            
+
+
         }
         inputText.text = "";
     }

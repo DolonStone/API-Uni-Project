@@ -22,40 +22,26 @@ public class GoogleAPI : MonoBehaviour
     private static string apiKey = "AIzaSyDR1b5h2h3UW0TTiMI3zzbGw_R4OHbHHqE";
     private static string searchEngineId = "b13db8adca5f34f05";
     private static int numResults = 1;
-    private bool isProcessing;
     private string URL; 
     private string Root;
     byte[] imageBytes;
 
 
-    // Start is called before the first frame update
-    void Start()
+    public byte[] getImageBytes() {
+        return imageBytes;  
+    }
+
+    private void Start()
     {
-        isProcessing = false;
         Root = Application.persistentDataPath;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isProcessing && Input.GetKeyDown(KeyCode.Space))
-        {
-            PerformCustomSearch("bellis perennis"); //Passed through the Query ->
-                                                    //thought we could just call this method when needed?
-        }
-        if (imageBytes != null && isProcessing)
-        {
-            //Update Sprite MUST be called in the main thread (Unity gets funny if you try and change sprite within async)
-            UpdateSprite(imageBytes); 
-        }
 
 
-    }
 
     public async Task PerformCustomSearch(string query)
     {
         Debug.Log("Hello!");
-        isProcessing = true;
         try
         {
             // Initialize Custom Search
@@ -96,7 +82,7 @@ public class GoogleAPI : MonoBehaviour
         }
     }
 
-    public async Task SaveImage(string imageUrl)
+    private async Task SaveImage(string imageUrl)
     {
         //Getting the image from the link and downloading it -> not sure if this is actually memory efficient -
         //will compare it to Beth's image code and see if I can improve it :))
@@ -116,7 +102,7 @@ public class GoogleAPI : MonoBehaviour
     }
    
 
-    private void UpdateSprite(byte[] imageBytes)
+    public Sprite UpdateSprite(byte[] imageBytes)
     {
         //Does what it says on the tin :)
         //This should probably be in the plant prefab but need to check with group :))
@@ -128,14 +114,8 @@ public class GoogleAPI : MonoBehaviour
         Sprite sprite = Sprite.Create(plantTex, rect, pivot);
         Debug.Log("Updating sprite...");
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        }
-        spriteRenderer.sprite = sprite;
-        isProcessing = false;
         URL = null;
+        return sprite;
     }
 
 

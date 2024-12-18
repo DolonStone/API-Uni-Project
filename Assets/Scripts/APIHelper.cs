@@ -12,6 +12,7 @@ using System;
 
 
 
+
 public static class APIHelper
 {
     
@@ -81,4 +82,11 @@ public static class APIHelper
             return weatherresponse;
         }
     }
+
+    public static Sprite GetImage(string Query) { 
+        GoogleAPI googleAPI = new GoogleAPI();
+        googleAPI.PerformCustomSearch(Query);
+        return googleAPI.UpdateSprite(googleAPI.getImageBytes());
+    }
+
 }
