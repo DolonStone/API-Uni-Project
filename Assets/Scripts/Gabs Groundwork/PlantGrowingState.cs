@@ -15,7 +15,7 @@ public class PlantGrowingState : PlantBaseState
     }
     public override void UpdateState(PlantScript plant)
     {
-
+        CurrentSun = GlobalWeatherInfo.Instance.sun;
 
 
         if (plant.GetWateredPercentage() >= 75 && plant.GetSunlightNeed() == CurrentSun)
