@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771ed4f5670b5f14c852746adbc936ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 0}
 --- !u!1 &1417911880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6388521742338375115, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6388521742338375115, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: ForceModule.enabled
@@ -2620,6 +2621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: simulationSpeed
       value: 1

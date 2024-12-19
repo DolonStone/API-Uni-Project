@@ -10,5 +10,11 @@ public class ParticleController : MonoBehaviour
     void Start()
     {   
         PARTS = particles.GetComponent<ParticleSystem>();
+        var em = PARTS.emission;
+        em.enabled = false;
+        var fol = PARTS.forceOverLifetime;
+        fol.enabled = true;
+
+        
     }
 }
