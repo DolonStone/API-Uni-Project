@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    public GameObject Particles;
-    void Start()
-    {
-        ComponentType particleSystem = Particles.GetComponent<Particle System>();
-    }
+    public GameObject particles;
+    ParticleSystem PARTS;
 
+    void Start()
+    {   
+        PARTS = particles.GetComponent<ParticleSystem>();
+    }
 }
