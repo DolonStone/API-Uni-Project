@@ -2,36 +2,60 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class PlantScript : MonoBehaviour
+public class PlantScript : MonoBehaviour,IPointerClickHandler
 {
     //Attributes
     public bool isGrowing = false;
+    private bool planted = false;
     PlantBaseState currentState;
     PlantSeedState seedState = new PlantSeedState();
     PlantGrowingState growingState = new PlantGrowingState();
     PlantHarvestState plantHarvestState = new PlantHarvestState();
     PlantDeadState deadState = new PlantDeadState();
+    [SerializeField]
     private float WateredPercentage;
     private string PlantName;
     private WaterNeed WaterNeed;
     private SunlightNeed SunlightNeed;
-    private string Cycle;
-    private float GrowthRate;
+    private GrowthRate cycle;
+    
+    private float growthRate;
     private DataPerenualResponse plantData;
-
+    private Slider waterBar;
+    private Slider growBar;
+    private Slider sunBar;
+    private GameObject plantMenu;
     private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        GrowthRate = 2f;
+        growthRate = 2f;
         currentState = seedState;
         currentState.EnterState(this);
         //WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), "FREQUENT", ignoreCase: true);
         //SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), "PART_SUN", ignoreCase: true);
         WateredPercentage = 50;
-
+        Slider[] sliders = GetComponentsInChildren<Slider>(true);
+        for(int i = 0; i < sliders.Length; i++)
+        {
+            if(sliders[i].gameObject.name == "Water")
+            {
+                waterBar = sliders[i];
+            }
+            else if(sliders[i].gameObject.name == "Growth")
+            {
+                growBar = sliders[i];
+            }
+            else if(sliders[i].gameObject.name == "Sun")
+            {
+                sunBar = sliders[i];
+            }
+        }
+        plantMenu = GetComponentsInChildren<Transform>(true)[1].gameObject;
     }
 
     // Update is called once per frame
@@ -44,20 +68,26 @@ public class PlantScript : MonoBehaviour
 
         }
         currentState.UpdateState(this);
-
+        
 
         timer += Time.deltaTime;
+
+
         if (timer > 1)
         {
-            WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
-            timer = 0;
+            
+                WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
+                UpdateSlider(waterBar, WateredPercentage);
+                timer = 0;
         }
+           
+
 
 
     }
 
     public float GetGrowthRate()
-    { return GrowthRate; }
+    { return growthRate; }
 
     public PlantBaseState GetCurrentState() { return currentState; }
     public void SetCurrentState(PlantBaseState _newState)
@@ -79,9 +109,27 @@ public class PlantScript : MonoBehaviour
     {
         plantData = data;
         PlantName = data.common_name;
-        Cycle = data.cycle;
         WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), data.watering, ignoreCase: true);
+        cycle = (GrowthRate)Enum.Parse(typeof(GrowthRate), data.cycle, ignoreCase: true);
+        growthRate = (float)cycle;
         SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), String.Join("_", data.sunlight[0].Split(default(string[]), StringSplitOptions.RemoveEmptyEntries)), ignoreCase: true);
+    }
+    private void UpdateSlider(Slider slider, float value)
+    {
+        slider.value = value;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+
+        if (plantMenu.activeSelf)
+        {
+            plantMenu.SetActive(false);
+        }
+        else
+        {
+            plantMenu.SetActive(true);
+        }
     }
 }
 
@@ -99,4 +147,11 @@ public enum SunlightNeed
     PART_SHADE,
     PART_SUN,
     FULL_SUN
+}
+public enum GrowthRate
+{
+    perennial, 
+    annual, 
+    biennial, 
+    biannual
 }
