@@ -14,10 +14,17 @@ public class PlantSearchViewFormatting : MonoBehaviour
         plantData = gameObject.GetComponent<PlantData>();
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = plantData.data.common_name;
         dataField.text += FormatDataToText(plantData.data);
-        spriteRenderer.sprite = APIHelper.GetImage(plantData.data.scientific_name.ToString());
+        ImageGen();
         //plant = gameObject.GetComponentInChildren<PlantScript>();
 
 
+    }
+
+
+    async void ImageGen()
+    {
+        spriteRenderer.sprite = await APIHelper.GetImage(plantData.data.scientific_name[0].ToString());
+        Debug.Log("GENERATED");
     }
 
     public void ShowData()

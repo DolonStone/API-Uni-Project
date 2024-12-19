@@ -17,29 +17,31 @@ using System.Net.Http;
 
 
 
-public class GoogleAPI : MonoBehaviour
+public class GoogleAPI: MonoBehaviour
 {
-    private static string apiKey = "AIzaSyDR1b5h2h3UW0TTiMI3zzbGw_R4OHbHHqE";
-    private static string searchEngineId = "b13db8adca5f34f05";
+    private static string apiKey = "AIzaSyB_mBQObwFwO6h22mIoRfsrWi2FdHcx_HQ";
+    private static string searchEngineId = "72d2bb3477cc34278";
     private static int numResults = 1;
-    private string URL; 
-    private string Root;
-    byte[] imageBytes;
+    private static string URL;
+    private static string Root = Application.persistentDataPath; // Ensure Root is initialized
+    private static byte[] imageBytes;
 
 
-    public byte[] getImageBytes() {
+    public static byte[] getImageBytes() {
         return imageBytes;  
     }
+
 
     private void Start()
     {
         Root = Application.persistentDataPath;
+        URL = null;
     }
 
 
+   
 
-
-    public async Task PerformCustomSearch(string query)
+    public static async Task PerformCustomSearch(string query)
     {
         Debug.Log("Hello!");
         try
@@ -48,7 +50,7 @@ public class GoogleAPI : MonoBehaviour
             var customSearchService = new CustomSearchAPIService(new BaseClientService.Initializer
             {
                 ApiKey = apiKey,
-                ApplicationName = "CropSim"
+                ApplicationName = "NewCropSimAPI"
             });
 
             //Creates the query (we can alter the specifics - pretty sure we can filter for image formats) 
@@ -59,7 +61,13 @@ public class GoogleAPI : MonoBehaviour
             listRequest.Num = numResults;
 
             Search searchResponse = await listRequest.ExecuteAsync().ConfigureAwait(false);
-            Debug.Log("Hello");
+
+            if (searchResponse == null || searchResponse.Items == null)
+            {
+                Debug.Log("No results found.");
+                return;
+            }
+
 
             if (searchResponse.Items != null)
             {
@@ -67,9 +75,10 @@ public class GoogleAPI : MonoBehaviour
                 {
 
                     URL = item.Link;
-                    await SaveImage(URL);
+                    Debug.Log(URL);
+                    
                 }
-
+                await SaveImage(URL, query);
             }
             else
             {
@@ -82,14 +91,16 @@ public class GoogleAPI : MonoBehaviour
         }
     }
 
-    private async Task SaveImage(string imageUrl)
+    private static async Task SaveImage(string imageUrl, string fileName)
     {
+        Debug.Log($"{imageUrl}");
         //Getting the image from the link and downloading it -> not sure if this is actually memory efficient -
         //will compare it to Beth's image code and see if I can improve it :))
+
         using (HttpClient imageClient = new HttpClient())
         {
-            string filePath = Path.Combine(Root, "savedTexture.png"); 
-
+            string filePath = Path.Combine(Root, $"{fileName}.png");
+            Debug.Log(filePath);
             imageBytes = await imageClient.GetByteArrayAsync(imageUrl);
             await File.WriteAllBytesAsync(filePath, imageBytes);
 
@@ -102,14 +113,12 @@ public class GoogleAPI : MonoBehaviour
     }
    
 
-    public Sprite UpdateSprite(byte[] imageBytes)
+    public static Sprite UpdateSprite(byte[] imageBytes)
     {
         //Does what it says on the tin :)
-        //This should probably be in the plant prefab but need to check with group :))
         Texture2D plantTex = new Texture2D(2, 2);
         plantTex.LoadImage(imageBytes);
-
-        Rect rect = new Rect(0, 0, plantTex.width, plantTex.height);
+        Rect rect = new Rect(0, 0, 100, 100);
         Vector2 pivot = new Vector2(0.5f, 0.5f);
         Sprite sprite = Sprite.Create(plantTex, rect, pivot);
         Debug.Log("Updating sprite...");
