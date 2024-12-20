@@ -9,6 +9,7 @@ public class PlantDragableItem : MonoBehaviour, IEndDragHandler, IPointerClickHa
     {
         if (this.transform.parent.gameObject.GetComponent<Slot>().planter)
         {
+            GetComponent<PlantScript>().PlantSeed();
             Destroy(GetComponent<DragableItem>());
         }
 
@@ -18,6 +19,7 @@ public class PlantDragableItem : MonoBehaviour, IEndDragHandler, IPointerClickHa
     {
         if (this.transform.parent.gameObject.GetComponent<Slot>().planter)
         {
+            GetComponent<PlantScript>().PlantSeed();
             Destroy(GetComponent<DragableItem>());
         }
     }

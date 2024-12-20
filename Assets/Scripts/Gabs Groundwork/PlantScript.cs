@@ -16,7 +16,8 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
     PlantHarvestState plantHarvestState = new PlantHarvestState();
     PlantDeadState deadState = new PlantDeadState();
     [SerializeField]
-    private float WateredPercentage;
+    private float WateredPercentage = 50;
+
     private string PlantName;
     private WaterNeed WaterNeed;
     private SunlightNeed SunlightNeed;
@@ -29,33 +30,16 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
     private Slider sunBar;
     private GameObject plantMenu;
     private float timer = 0.0f;
+    private float currentGrowTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        growthRate = 2f;
+        WateredPercentage = 50;
         currentState = seedState;
         currentState.EnterState(this);
-        //WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), "FREQUENT", ignoreCase: true);
-        //SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), "PART_SUN", ignoreCase: true);
-        WateredPercentage = 50;
-        Slider[] sliders = GetComponentsInChildren<Slider>(true);
-        for(int i = 0; i < sliders.Length; i++)
-        {
-            if(sliders[i].gameObject.name == "Water")
-            {
-                waterBar = sliders[i];
-            }
-            else if(sliders[i].gameObject.name == "Growth")
-            {
-                growBar = sliders[i];
-            }
-            else if(sliders[i].gameObject.name == "Sun")
-            {
-                sunBar = sliders[i];
-            }
-        }
-        plantMenu = GetComponentsInChildren<Transform>(true)[1].gameObject;
+
+        FindSliders();
     }
 
     // Update is called once per frame
@@ -67,25 +51,48 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
             WateredPercentage = 100;
 
         }
-        currentState.UpdateState(this);
         
 
+        if(planted == true)
+        {
+            TickPlant();
+        }
+        
+    }
+    private void FindSliders()
+    {
+        Slider[] sliders = GetComponentsInChildren<Slider>(true);
+        for (int i = 0; i < sliders.Length; i++)
+        {
+            if (sliders[i].gameObject.name == "Water")
+            {
+                waterBar = sliders[i];
+            }
+            else if (sliders[i].gameObject.name == "Growth")
+            {
+                growBar = sliders[i];
+            }
+            else if (sliders[i].gameObject.name == "Sun")
+            {
+                sunBar = sliders[i];
+            }
+        }
+        plantMenu = GetComponentsInChildren<Transform>(true)[1].gameObject;
+    }
+    private void TickPlant()
+    {
+        currentState.UpdateState(this);
+
         timer += Time.deltaTime;
-
-
         if (timer > 1)
         {
-            
-                WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
-                UpdateSlider(waterBar, WateredPercentage);
-                timer = 0;
+            WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
+            UpdateSlider(waterBar, WateredPercentage);
+            timer = 0;
         }
-           
-
-
-
+        UpdateSlider(growBar, currentGrowTime/growthRate);
+        UpdateSlider(sunBar, (-1.0f/3.0f*(float)(Mathf.Abs(GlobalWeatherInfo.Instance.sun - (int)SunlightNeed)) + 1.0f));
     }
-
     public float GetGrowthRate()
     { return growthRate; }
 
@@ -94,6 +101,11 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
     {
         currentState = _newState;
     }
+    public float GetCurrerntGrowTime() { return currentGrowTime; }
+    public void SetCurrentGrowTime(float growtime)
+    {
+        currentGrowTime = growtime;
+    }
     public PlantSeedState GetCurrentSeedState() { return seedState; }
 
     public PlantGrowingState GetGrowingState() { return growingState; }
@@ -101,7 +113,7 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
     public PlantHarvestState GetHarvestState() { return plantHarvestState; }
     public PlantDeadState GetDeadState() { return deadState; }
 
-
+    public void PlantSeed() { planted = true; }
     public float GetWateredPercentage() { return WateredPercentage; }
     public float GetSunlightNeed() { return (int)SunlightNeed; }
 
@@ -111,7 +123,16 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
         PlantName = data.common_name;
         WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), data.watering, ignoreCase: true);
         cycle = (GrowthRate)Enum.Parse(typeof(GrowthRate), data.cycle, ignoreCase: true);
-        growthRate = (float)cycle;
+        if((int)cycle%2==0 || (int)cycle % 3 == 0)
+        {
+            growthRate = 2000;
+        }
+        else
+        {
+            growthRate = 1000;
+        }
+        
+        
         SunlightNeed = (SunlightNeed)Enum.Parse(typeof(SunlightNeed), String.Join("_", data.sunlight[0].Split(default(string[]), StringSplitOptions.RemoveEmptyEntries)), ignoreCase: true);
     }
     private void UpdateSlider(Slider slider, float value)
