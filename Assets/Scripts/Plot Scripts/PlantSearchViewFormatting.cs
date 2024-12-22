@@ -2,24 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlantSearchViewFormatting : MonoBehaviour
 {
     private PlantData plantData;
     [SerializeField] private TextMeshProUGUI dataField;
     [SerializeField] private PlantScript plant;
+    [SerializeField] private Image PlantPicture;
     void Start()
     {
         plantData = gameObject.GetComponent<PlantData>();
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = plantData.data.common_name;
         dataField.text += FormatDataToText(plantData.data);
-
         //plant = gameObject.GetComponentInChildren<PlantScript>();
-        
+
+
+    }
+
+
+    async void ImageGen()
+    {
+        PlantPicture.sprite = await APIHelper.GetImage(plantData.data.scientific_name[0].ToString());
+        PlantPicture.preserveAspect = true;
+        Debug.Log("GENERATED");
     }
 
     public void ShowData()
     {
+
+        ImageGen();
         GiveDataToPlant(plantData.data, plant);
         GameObject responseDataObject = dataField.gameObject.transform.parent.gameObject;
         if (responseDataObject.activeSelf)

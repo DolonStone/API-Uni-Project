@@ -8,6 +8,7 @@ using System.Threading;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System;
+using System.Threading.Tasks;
 
 
 
@@ -81,4 +82,11 @@ public static class APIHelper
             return weatherresponse;
         }
     }
+
+    public static async Task<Sprite> GetImage(string Query)
+    {
+        await GoogleAPI.PerformCustomSearch(Query);
+        return GoogleAPI.UpdateSprite(GoogleAPI.getImageBytes());
+    }
+
 }
