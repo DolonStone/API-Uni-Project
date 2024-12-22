@@ -24,6 +24,7 @@ public class PlantSearchViewFormatting : MonoBehaviour
     async void ImageGen()
     {
         PlantPicture.sprite = await APIHelper.GetImage(plantData.data.scientific_name[0].ToString());
+        PlantPicture.preserveAspect = true;
         Debug.Log("GENERATED");
     }
 
