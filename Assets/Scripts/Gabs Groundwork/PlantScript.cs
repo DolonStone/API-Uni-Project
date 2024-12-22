@@ -122,8 +122,8 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
         plantData = data;
         PlantName = data.common_name;
         WaterNeed = (WaterNeed)Enum.Parse(typeof(WaterNeed), data.watering, ignoreCase: true);
-        cycle = (GrowthRate)Enum.Parse(typeof(GrowthRate), data.cycle, ignoreCase: true);
-        if((int)cycle%2==0 || (int)cycle % 3 == 0)
+        cycle = (GrowthRate)Enum.Parse(typeof(GrowthRate), String.Join("_", data.cycle.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries)), ignoreCase: true);
+        if ((int)cycle%2==0 || (int)cycle % 3 == 0)
         {
             growthRate = 2000;
         }
@@ -174,5 +174,6 @@ public enum GrowthRate
     perennial, 
     annual, 
     biennial, 
-    biannual
+    biannual,
+    herbaceous_Perennial,
 }
