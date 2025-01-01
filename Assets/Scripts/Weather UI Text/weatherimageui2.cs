@@ -31,7 +31,7 @@ public class WeatherImageUI2 : MonoBehaviour
     // Load the relevant weather image asynchronously
     void LoadWeatherImage()
     {
-        if (arrayindex < 0 || arrayindex >= weatherImages.Length)
+        if (arrayindex < 0 || arrayindex >= weatherImages.Length) // checking that findweather has executed properly
         {
             Debug.LogError("Invalid weather type index");
             return;
