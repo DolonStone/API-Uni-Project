@@ -7,6 +7,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class WeatherImageUI2 : MonoBehaviour
 {
+    // Singleton instance
+    public static WeatherImageUI2 Instance { get; private set; }
+
     public Image Image;
     public AssetReferenceSprite[] weatherImages;  // Array of AssetReferenceSprites
     private string weathername;
@@ -19,6 +22,20 @@ public class WeatherImageUI2 : MonoBehaviour
         "snow-showers-day", "snow-showers-night", "thunder", "thunder-rain",
         "thunder-showers-day", "thunder-showers-night", "wind"
     };
+
+    private void Awake()
+    {
+        // Enforce the singleton pattern
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("Multiple instances of WeatherImageUI2 detected. Destroying duplicate.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // Optional: Preserve this instance across scenes if needed
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,4 +87,3 @@ public class WeatherImageUI2 : MonoBehaviour
         arrayindex = 5; // Default to clear-day if not found
     }
 }
-
