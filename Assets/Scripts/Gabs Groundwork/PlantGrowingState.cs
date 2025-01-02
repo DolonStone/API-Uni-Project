@@ -18,7 +18,7 @@ public class PlantGrowingState : PlantBaseState
         CurrentSun = GlobalWeatherInfo.Instance.sun;
 
 
-        if (plant.GetWateredPercentage() >= 75 && plant.GetSunlightNeed() == CurrentSun)
+        if (plant.GetWateredPercentage() >= 50 && plant.GetSunlightNeed() == CurrentSun)
         {
             timer += Time.deltaTime;
             plant.SetCurrentGrowTime(timer);
@@ -30,7 +30,7 @@ public class PlantGrowingState : PlantBaseState
             plant.SetCurrentState(plant.GetHarvestState());
             plant.GetCurrentState().EnterState(plant);
         }
-        if (plant.GetWateredPercentage() <= 25)
+        if (plant.GetWateredPercentage() <= 0)
         {
             plant.SetCurrentState(plant.GetDeadState());
             plant.GetDeadState().EnterState(plant);

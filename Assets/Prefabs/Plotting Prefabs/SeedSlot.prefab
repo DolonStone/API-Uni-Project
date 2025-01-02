@@ -217,6 +217,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5162409150489555625}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FlipSimpleDataActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlantNameButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645786254475180292, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5781489873485179010, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
       propertyPath: m_Name
       value: Plant
@@ -226,6 +254,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+--- !u!114 &5162409150489555625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4510335094074620431, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}
+  m_PrefabInstance: {fileID: 8733431967760795814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d5dbaeb17b714e89a82561a87fefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8205094875247651152 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 643232218032890358, guid: bbd27f214e4857d47ac18bd6f3633635, type: 3}

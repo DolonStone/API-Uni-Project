@@ -19,6 +19,10 @@ public class GlobalWeatherInfo : MonoBehaviour
             instance = this;
         }
     }
-    public int sun = 1;
+    public int sun;
+    public bool isRaining;
+    public int weatherType;
+    public bool isSnowing;
+    public bool isFoggy;
 
 }

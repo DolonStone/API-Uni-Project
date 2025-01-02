@@ -86,7 +86,14 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
         timer += Time.deltaTime;
         if (timer > 1)
         {
-            WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
+            if (GlobalWeatherInfo.Instance.isRaining)
+            {
+                WateredPercentage = (float)(WateredPercentage * (1 + ((float)(int)WaterNeed / 100)));
+            }
+            else
+            {
+                WateredPercentage = (float)(WateredPercentage * (1 - ((float)(int)WaterNeed / 100)));
+            }
             UpdateSlider(waterBar, WateredPercentage);
             timer = 0;
         }
@@ -106,13 +113,14 @@ public class PlantScript : MonoBehaviour,IPointerClickHandler
     {
         currentGrowTime = growtime;
     }
+    public string GetName() { return PlantName; }
     public PlantSeedState GetCurrentSeedState() { return seedState; }
 
     public PlantGrowingState GetGrowingState() { return growingState; }
 
     public PlantHarvestState GetHarvestState() { return plantHarvestState; }
     public PlantDeadState GetDeadState() { return deadState; }
-
+    public DataPerenualResponse GetPlantData() { return plantData;  }
     public void PlantSeed() { planted = true; }
     public float GetWateredPercentage() { return WateredPercentage; }
     public float GetSunlightNeed() { return (int)SunlightNeed; }

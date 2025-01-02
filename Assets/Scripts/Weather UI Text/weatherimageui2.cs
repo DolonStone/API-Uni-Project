@@ -14,6 +14,7 @@ public class WeatherImageUI2 : MonoBehaviour
     public AssetReferenceSprite[] weatherImages;  // Array of AssetReferenceSprites
     private string weathername;
     private int arrayindex = 0;
+    
 
     private string[] weathertypes = {
         "clear-day", "clear-night", "cloudy", "fog", "hail", "null",
@@ -43,6 +44,7 @@ public class WeatherImageUI2 : MonoBehaviour
         weathername = APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon;
         FindWeather();
         LoadWeatherImage();
+
     }
 
     // Load the relevant weather image asynchronously
@@ -79,11 +81,53 @@ public class WeatherImageUI2 : MonoBehaviour
             {
                 arrayindex = i;
                 Debug.Log("Weather found: " + weathername + " at index: " + arrayindex);
+                GlobaliseInfo(arrayindex);
+
+                
                 return;
             }
         }
 
+        
         Debug.LogWarning("Weather type not found, defaulting to index 0");
         arrayindex = 5; // Default to clear-day if not found
+    }
+    private void GlobaliseInfo(int index)
+    {
+        int sunType;
+        if (index == 0 || index == 21)
+        {
+            sunType = 3;
+        }
+        else if (index == 6 || index == 9 || index == 11 || index == 12)
+        {
+            sunType = 2;
+        }
+        else if (index == 2 || index == 3)
+        {
+            sunType = 1;
+        }
+        else
+        {
+            sunType = 0;
+        }
+        GlobalWeatherInfo.Instance.sun = sunType;
+        if(index == 3)
+        {
+            GlobalWeatherInfo.Instance.isFoggy = true;
+        }
+        print(APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon);
+        if (APIHelper.GetWeather(APIHelper.GetLocation()).days[0].preciptype != null)
+        {
+            if (APIHelper.GetWeather(APIHelper.GetLocation()).days[0].preciptype[0] == "rain")
+            {
+                GlobalWeatherInfo.Instance.isRaining = true;
+            }
+            if (APIHelper.GetWeather(APIHelper.GetLocation()).days[0].preciptype[0] == "snow")
+            {
+                GlobalWeatherInfo.Instance.isSnowing = true;
+            }
+        }
+
     }
 }
