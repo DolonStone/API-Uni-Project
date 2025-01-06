@@ -956,19 +956,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1200662847}
     m_Modifications:
     - target: {fileID: 420420709745956697, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6184354970927323538, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_Name
-      value: Snow
+      value: snow
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.55000037
+      value: 0.5500004
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalScale.y
@@ -976,15 +976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.68
+      value: 4.025239
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.18
+      value: 9.089715
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0020821523
       objectReference: {fileID: 0}
     - target: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1786,6 +1786,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planter: 1
+--- !u!1 &628321695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6184354970927323538, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
+  m_PrefabInstance: {fileID: 390856695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &628321698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7799885225981956713, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
+  m_PrefabInstance: {fileID: 390856695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &650378698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4626243489710753136, guid: 245fd76298aa9e548bc51889aade5901, type: 3}
@@ -1972,11 +1982,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1200662847}
     m_Modifications:
     - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: simulationSpeed
@@ -2020,7 +2030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563240524611394291, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_Name
-      value: Clouds
+      value: clouds
       objectReference: {fileID: 0}
     - target: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_LocalScale.x
@@ -2032,15 +2042,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.820001
+      value: -15.474762
       objectReference: {fileID: 0}
     - target: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00999999
+      value: 0.919715
       objectReference: {fileID: 0}
     - target: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0020821523
       objectReference: {fileID: 0}
     - target: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2739,6 +2749,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planter: 1
+--- !u!1 &1200662845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1200662847}
+  - component: {fileID: 1200662848}
+  m_Layer: 0
+  m_Name: WeatherEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200662847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200662845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6547611, y: -0.909715, z: 0.0020821523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1741462822}
+  - {fileID: 628321698}
+  - {fileID: 1352919926}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1200662848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200662845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771ed4f5670b5f14c852746adbc936ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rain: {fileID: 1741462818}
+  snow: {fileID: 628321695}
+  clouds: {fileID: 1352919923}
 --- !u!1 &1291866748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,6 +2889,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291866748}
   m_CullTransparentMesh: 1
+--- !u!1 &1352919923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6563240524611394291, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
+  m_PrefabInstance: {fileID: 830613705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1352919926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7131639289898242312, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
+  m_PrefabInstance: {fileID: 830613705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1388144910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4626243489710753136, guid: 245fd76298aa9e548bc51889aade5901, type: 3}
@@ -3026,7 +3096,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1200662847}
     m_Modifications:
     - target: {fileID: 625449292095255296, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: m_Name
@@ -3038,15 +3108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3549952015140976891, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.6547611
       objectReference: {fileID: 0}
     - target: {fileID: 3549952015140976891, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.02
+      value: 5.929715
       objectReference: {fileID: 0}
     - target: {fileID: 3549952015140976891, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0020821523
       objectReference: {fileID: 0}
     - target: {fileID: 3549952015140976891, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3078,7 +3148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6388521742338375115, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6388521742338375115, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
       propertyPath: ForceModule.enabled
@@ -3306,7 +3376,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771ed4f5670b5f14c852746adbc936ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 0}
+  rain: {fileID: 0}
+  snow: {fileID: 0}
+  clouds: {fileID: 0}
+--- !u!4 &1741462822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3549952015140976891, guid: a801fcf5b09294c4bad55c332047ecc0, type: 3}
+  m_PrefabInstance: {fileID: 1615016671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1777900543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,6 +4112,4 @@ SceneRoots:
   - {fileID: 1492614164}
   - {fileID: 727398384}
   - {fileID: 190068973}
-  - {fileID: 1615016671}
-  - {fileID: 390856695}
-  - {fileID: 830613705}
+  - {fileID: 1200662847}
