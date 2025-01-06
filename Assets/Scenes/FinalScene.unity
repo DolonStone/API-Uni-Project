@@ -960,7 +960,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 420420709745956697, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184354970927323538, guid: 94ae6c4177fe216458acccbc621a9eca, type: 3}
       propertyPath: m_Name
@@ -1976,7 +1976,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 798205892888777784, guid: ae76cc592bb4ccc41a56a35702b9c941, type: 3}
       propertyPath: simulationSpeed
