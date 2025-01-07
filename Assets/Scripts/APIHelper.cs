@@ -27,7 +27,7 @@ public static class APIHelper
 
         List<DataPerenualResponse[]> allDataResponses = new List<DataPerenualResponse[]>();
         allDataResponses.Add(firstResponse.data);
-        for (int i = 1; i < firstResponse.last_page;i++)
+        for (int i = 1; i < firstResponse.last_page&&i<5;i++)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://perenual.com/api/species-list?key=sk-c5lj6762bf40387307981&q=" + plantName+"&page="+i); //sends request to the link
             HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //gets the response from the request
