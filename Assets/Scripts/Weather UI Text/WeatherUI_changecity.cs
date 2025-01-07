@@ -10,6 +10,7 @@ public class WeatherUI_changecity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // sets the text to the city given by the ip-api
         textMeshPro.text = APIHelper.GetLocation();
     }
 

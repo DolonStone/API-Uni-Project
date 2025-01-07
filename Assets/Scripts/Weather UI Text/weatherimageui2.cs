@@ -10,8 +10,8 @@ public class WeatherImageUI2 : MonoBehaviour
     // Singleton instance
     public static WeatherImageUI2 Instance { get; private set; }
 
-    public Image Image;
-    public AssetReferenceSprite[] weatherImages;  // Array of AssetReferenceSprites
+    public Image Image; // Image gameobject for the UI
+    public AssetReferenceSprite[] weatherImages;  // Array of AssetReferenceSprites addressables
     private string weathername;
     private int arrayindex = 0;
     
@@ -22,7 +22,7 @@ public class WeatherImageUI2 : MonoBehaviour
         "showers-night", "snow", "snow-day", "snow-night", "snow-showers",
         "snow-showers-day", "snow-showers-night", "thunder", "thunder-rain",
         "thunder-showers-day", "thunder-showers-night", "wind"
-    };
+    }; // string of every available weather type in the same order as the weatherImages array
 
     private void Awake()
     {
@@ -35,12 +35,13 @@ public class WeatherImageUI2 : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional: Preserve this instance across scenes if needed
+        DontDestroyOnLoad(gameObject); // Preserve this instance across scenes
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // get the weather type, find its array number, set the image to the addressable at the equivalent array spot
         weathername = APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon;
         FindWeather();
         LoadWeatherImage();

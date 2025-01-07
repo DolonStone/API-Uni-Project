@@ -11,6 +11,7 @@ public class WeatherUI_changewtext : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //sets text to the weather returned by the weather api
         textMeshPro.text = APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon;
     }
 
