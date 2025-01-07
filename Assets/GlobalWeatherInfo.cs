@@ -28,10 +28,10 @@ public class GlobalWeatherInfo : MonoBehaviour
         }
     }
     public int sun;
-    public bool isRaining;
+    public bool isRaining= false;
     public int weatherType;
-    public bool isSnowing;
-    public bool isFoggy;
+    public bool isSnowing = false;
+    public bool isFoggy=false;
     private string[] weathertypes = {
         "clear-day", "clear-night", "cloudy", "fog", "hail", "null",
         "partly-cloudy-day", "partly-cloudy-night", "rain", "showers-day",
@@ -63,9 +63,10 @@ public class GlobalWeatherInfo : MonoBehaviour
         {
             GlobalWeatherInfo.Instance.isFoggy = true;
         }
-        print(APIHelper.GetWeather(APIHelper.GetLocation()).days[0].icon);
+        
         if (APIHelper.GetWeather(APIHelper.GetLocation()).days[0].preciptype != null)
         {
+            
             if (APIHelper.GetWeather(APIHelper.GetLocation()).days[0].preciptype[0] == "rain")
             {
                 GlobalWeatherInfo.Instance.isRaining = true;
